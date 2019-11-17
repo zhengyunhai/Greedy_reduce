@@ -174,59 +174,7 @@ void close_vec(vec_ZZ& c,mat_ZZ& B,int k)
 		VectorCopy(mat_c(3),c3,m);
 		VectorCopy(mat_c(4),c4,m);
 	
-		c=close_vec_in2(mat_c,B(3));//返回ci四个向量中与b3最近的一个 
-		
-		temp=operator-(B(3),c);
-		for(i=0;i<m;i++)
-		{
-			tempd=operator+(tempd,sqr(temp[i]));
-		}
-		
-		d=MakeRR(tempd,0);
-		d=sqrt(d);//d=||b3-c||
-		for(i=0;i<m;i++)
-		{
-			normb2_=operator+(normb2_,sqr(b2_[i]));
-		}
-		
-		normb2_=sqrt(normb2_);
-		lb=CeilToZZ(operator-(u[3],operator/(d,normb2_)));
-		ub=FloorToZZ(operator+(u[3],operator/(d,normb2_)));
-		
-		num=intcount(lb,ub);
-	//	cout<<"num="<<num<<endl;
-		mat_c_.SetDims(num+1,m);
-		z.SetLength(num);
-		
-		i=0;	
-		while(operator<=(operator+(lb,i),ub))
-		{
-			z[i]=operator+(lb,i);
-			i++;
-		}
-		VectorCopy(mat_c_(1),c,m);
-		
-		
-			for(j=0;j<num;j++)
-		{
-			temp=operator-(B(3),operator*(z[j],B(2)));
-
-			//计算t3参与的正交化系数，先将t3转为RR型 
-			for(i=0;i<m;i++)
-			{
-				tempr[i]=MakeRR(temp[i],0);
-			}
-			InnerProduct(mu1,tempr,b1_);//<t3i,b1*>
-			InnerProduct(mu2,b1_,b1_);//<b2*,b2*>
-			div(ct,mu1,mu2);//ct1=<t3i,b1*>/<b2*,b2*>
-			
-			mat_c_(j+2)=operator+(operator*(RoundToZZ(ct),B(1)),operator*(z[j],B(2)));
-			
-		}
-		//	cout<<"mat_c_=..."<<endl;
-			clear(c);
-			c=close_vec_in2(mat_c_,B(3));//t3i
-			
+		c=close_vec_in2(mat_c,B(3));//返回ci四个向量中与b3最近的一个 			
 
 	 } 
 	
@@ -308,7 +256,7 @@ void close_vec(vec_ZZ& c,mat_ZZ& B,int k)
 		normb3_=sqrt(normb3_);
 		lb=CeilToZZ(operator-(u[0],operator/(d,normb3_)));
 		ub=FloorToZZ(operator+(u[0],operator/(d,normb3_)));
-		
+	//	cout<<"lb...="<<lb<<" "<<ub<<endl;
 		num=intcount(lb,ub);//计数
 	//	cout<<"num="<<num<<endl;
 	//	if(num>LEN+1) {cout<<"数组范围不足，应该动态分配？"<<endl;exit(0); }

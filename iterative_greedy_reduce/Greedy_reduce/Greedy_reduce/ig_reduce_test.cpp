@@ -29,18 +29,31 @@ int main(void)
 	int i,j,l,m;
 	vec_ZZ norm_test;
 	
-
+	//m=3;
 	ifstream inf;
 	inf.open("L.txt");
 	inf>>L;
 	inf.close();
 	m=L.NumRows();
+	L.SetDims(m,m);
+	L_.SetDims(m,m);
 	norm_test.SetLength(m);
-	
+
+/*	for(i=1;i<=m;i++)
+	{
+		for(j=1;j<=m;j++)
+		{
+			RandomLen(L(i,j),1024);
+		}
+	 }
+	*/ 
 	cout<<"L orignal="<<endl<<L<<endl;
-	
+	for(i=1;i<=m;i++)
+	{
+		VectorCopy(L_(i),L(i),m);
+	 }
 	ig_reduce(L);
-//	cout<<"L -ig reduced="<<endl<<L<<endl;
+	cout<<"L -ig reduced="<<endl<<L<<endl;
 	for(i=1;i<=m;i++)
 {
 	for(l=1;l<=m;l++)
@@ -52,11 +65,7 @@ int main(void)
 }
 
 
-	inf.open("L.txt");
-	inf>>L_;
-	inf.close();
-	order_all(L_);
-	
+		
 	LLL(det,L_,0);
 	
 	cout<<"L -L3 reduced="<<endl<<L_<<endl;

@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = ig_reduce.o test_time.o
-LINKOBJ  = ig_reduce.o test_time.o
+OBJ      = ig_reduce.o ig_reduce_test.o
+LINKOBJ  = ig_reduce.o ig_reduce_test.o
 LIBS     = -L"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/lib" -L"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32/CNTL.a -g3
 INCS     = -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/include" -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/include" -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/wheresoftlie/Dev-c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -27,5 +27,5 @@ $(BIN): $(OBJ)
 ig_reduce.o: ig_reduce.cpp
 	$(CPP) -c ig_reduce.cpp -o ig_reduce.o $(CXXFLAGS)
 
-test_time.o: test_time.cpp
-	$(CPP) -c test_time.cpp -o test_time.o $(CXXFLAGS)
+ig_reduce_test.o: ig_reduce_test.cpp
+	$(CPP) -c ig_reduce_test.cpp -o ig_reduce_test.o $(CXXFLAGS)
