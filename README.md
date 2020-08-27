@@ -10,6 +10,7 @@ The programe is based on NTL lib, please load it in advance.
 Example:
   
   ig_reduce(L);
+  
   cout<<L<<endl;
   
   The parameter L is the lattice basis matrix to be reduced.
